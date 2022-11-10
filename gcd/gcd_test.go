@@ -20,7 +20,9 @@ func TestGCD(t *testing.T) {
 		{"zero values", 0, 0, 0, ErrZeroValues},
 	}
 	for _, tc := range testCases {
+		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
 			actualGCD, err := GCD(tc.a, tc.b)
 			assert.ErrorIs(t, err, tc.expectedErr)
 			assert.Equal(t, tc.expectedGCD, actualGCD)
